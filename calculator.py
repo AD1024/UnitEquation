@@ -25,30 +25,30 @@ class Unit(Enum):
 
 def to_meter(value, unit):
     return {
-        Unit.cm: value / 100,
-        Unit.m: value,
-        Unit.dm: value / 10,
-        Unit.km: value * 1000,
-        Unit.ft: value * 0.3048,
-        Unit.yd: value * 0.9144,
-        Unit.inn: value * 0.0254,
-        Unit.mi: value * 1609,
-        Unit.mm: value * 0.001,
-    }[unit]
+        Unit.cm: lambda: value / 100,
+        Unit.m: lambda: value,
+        Unit.dm: lambda: value / 10,
+        Unit.km: lambda: value * 1000,
+        Unit.ft: lambda: value * 0.3048,
+        Unit.yd: lambda: value * 0.9144,
+        Unit.inn: lambda: value * 0.0254,
+        Unit.mi: lambda: value * 1609,
+        Unit.mm: lambda: value * 0.001,
+    }[unit]()
 
 
 def meter_to(value, unit):
     return {
-        Unit.cm: value * 100,
-        Unit.m: value,
-        Unit.dm: value * 10,
-        Unit.km: value / 1000,
-        Unit.ft: value / 0.3048,
-        Unit.yd: value / 0.9144,
-        Unit.inn: value / 0.0254,
-        Unit.mi: value / 1609,
-        Unit.mm: value / 0.001,
-    }[unit]
+        Unit.cm: lambda: value * 100,
+        Unit.m: lambda: value,
+        Unit.dm: lambda: value * 10,
+        Unit.km: lambda: value / 1000,
+        Unit.ft: lambda: value / 0.3048,
+        Unit.yd: lambda: value / 0.9144,
+        Unit.inn: lambda: value / 0.0254,
+        Unit.mi: lambda: value / 1609,
+        Unit.mm: lambda: value / 0.001,
+    }[unit]()
 
 
 def unify_expression(exp):
