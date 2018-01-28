@@ -39,7 +39,7 @@ class Evaluator:
             '*': lambda: self.exec(node.lchild) * self.exec(node.rchild),
             '/': lambda: self.exec(node.lchild) / self.exec(node.rchild),
             '%': lambda: self.exec(node.lchild) % self.exec(node.rchild),
-            '**': lambda: self.exec(node.lchild) ** self.exec(node.rchild),
+            '^': lambda: self.exec(node.lchild) ** self.exec(node.rchild),
         }[node.op]()
 
 
@@ -65,7 +65,7 @@ class ExprTreeConstructor:
             '*': lambda: self.num.append(Operator(fi, '*', se)),
             '/': lambda: self.num.append(Operator(fi, '/', se)),
             '%': lambda: self.num.append(Operator(fi, '%', se)),
-            '^': lambda: self.num.append(Operator(fi, '**', se)),
+            '^': lambda: self.num.append(Operator(fi, '^', se)),
         }[self.op[-1]]()
         self.op.pop()
 

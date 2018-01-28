@@ -92,6 +92,8 @@ def unify_expression(exp):
             if reader.get_cursor_data() != '?' and reader.get_prev_data(step=3) != '?' \
                     and reader.get_prev_data(step=4) != '?':
                 ret += ch
+        else:
+            ret += ch
     if leading_symbol is None:
         leading_symbol = '+'
     return (ret, query_unit, leading_symbol) if query_unit and leading_symbol else ret
@@ -142,7 +144,7 @@ def main():
             lexpr = '0'
         if rexpr == '':
             rexpr = '0'
-        # print(lexpr, rexpr, sep=' ')
+        # print(lexpr, rexpr, sep=',')
         raw_value = {
             '+': lambda: eval_expression(rexpr) - eval_expression(lexpr),
             '-': lambda: eval_expression(lexpr) - eval_expression(rexpr),

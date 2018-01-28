@@ -17,7 +17,7 @@ class Reader:
         return ret
 
     def prev(self, step=1):
-        self.cursor = self.cursor - step if self.cursor > 0 else 0
+        self.cursor = self.cursor - step if self.cursor - step >= 0 else 0
 
     def has_next(self):
         return self.cursor + 1 <= len(self.data)
